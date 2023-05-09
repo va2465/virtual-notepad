@@ -4,17 +4,28 @@ In place of a pen or keyboard, this project attempts to offer a new way to write
 
 ## Table of contents
 
+* [File Description](#file-description)
 * [License](#license)
 * [Introduction](#introduction)
 * [Hardware Requirements](#hardware-requirements)
 * [Installing the Sketch](#installing-the-sketch)
-  * [Arduino Desktop IDE](#arduino-desktop-ide)
   * [Arduino Web Editor](#arduino-web-editor)
 * [Training Gestures](#training-gestures)
 * [Pretrained Model](#pretrained-model)
 * [Training](#training)
 * [Deployment](#deployment)
 * [Contributing](#contributing)
+
+## File Description
+
+* `Training data` directory: Contains the training data.
+* `LICENSE`: Contains the standard open source MIT license.
+* `rasterize_stroke.cpp`: The C++ source file to create a rasterized version of the sample images i.e. converting to a pixel image.
+* `rasterize_stroke.h`: The header file for `rasterize_stroke.cpp`.
+* `virtual_notepad_model_data.cpp`: The C++ source file that contains the sample data of all the alphabets that was captured using the arduino device manually using the arduino web editor.
+* `virtual_notepad_model_data.h`: The header file for `virtual_notepad_model_data.cpp`.
+* `virtual_notepad.ino`: The arduino file which is used to test the project. In this file, creation and generation of a pattern is done from the information sent by the accelerometer and gyroscpic sensors. Using this information, comparsion with the trained data sample image was done, and generated the similarity score among all the twenty six alphabets. The top three similarity scores are displayed on the screen.
+* `Virtual_Notepad.ipynb`: Collab notebook file that contains the entire implementation of design classification and validation of the project.
 
 ## License
 
@@ -40,19 +51,11 @@ The following are required:
 
 ## Installing the Sketch
 
-You must confirm that you can use the desktop IDE or the online web editor to connect to your Arduino board and successfully load sketches onto it. Depending on whether you're using the online application or a desktop application, you'll need to take the following actions after making sure you can successfully load a basic sketch:
-
-### Arduino Desktop IDE
-
-You must download the most recent version of this sketch if you're using the downloadable Arduino program. The simplest method is to download and unpack a zip file, but if you know how to use git, you can also clone this repository.
-
-Make sure the Arduino board is visible and connected to the appropriate port before opening the `virtual_notepad.ino` file in the Arduino editor. Using the main menu's Sketch --> Include Library --> Manage Libraries, you must look for the libraries that the sketch requires. We can retrieve the accelerometer and gyroscope values from the board's IMU using the [`Arduino_LSM9DS1`](https://github.com/arduino-libraries/Arduino_LSM9DS1), and you must have at least version 1.1.0. You should also search for [`ArduinoBLE`](https://www.arduino.cc/en/Reference/ArduinoBLE) and make sure you have version 1.1.3 or newer because we'll be using Bluetooth to communicate with the website.
-
-To compile and install the sketch on your board, simply press the upload button at this point.
+We have used the Arduino Web Editor to do the entire project. This avoids the hassle of system compatibility and installing all the packages for the Arduino IDE. For this reason Arduino Web Editor was the prefered choice.
 
 ### Arduino Web Editor
 
-You should be able to build a copy of the virtual notepad sketch and then press upload to install it on your board because the web editor doesn't require any library installation and will choose the most recent versions of any libraries needed.
+We have used the Arduino Web Editor to run the project. After successfully running the project, we were able to test the project in the same editor.
 
 ## Training Gestures
 
